@@ -76,14 +76,14 @@ Puppet::Type.type(:package).provide :homebrew,
       # Okay, so there's a version already active, it's not the right
       # one, and the right one isn't installed. That's an upgrade.
 
-      run "boxen-upgrade", resource[:name]
+      run "boxen-upgrade --HEAD", resource[:name]
     else
       # Nothing here? Nothing from before? Yay! It's a normal install.
 
       if install_options
-        run "install", resource[:name], *install_options
+        run "install --HEAD", resource[:name], *install_options
       else
-        run "boxen-install", resource[:name]
+        run "boxen-install --HEAD", resource[:name]
       end
 
     end
